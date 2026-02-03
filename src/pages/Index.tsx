@@ -5,7 +5,16 @@ import SearchForm from "@/components/SearchForm";
 import ScanningView from "@/components/ScanningView";
 import ResultsView from "@/components/ResultsView";
 import FeatureCards from "@/components/FeatureCards";
+import AttackPath from "@/components/AttackPath";
+import BeforeAfter from "@/components/BeforeAfter";
+import PlatformSection from "@/components/PlatformSection";
+import Capabilities from "@/components/Capabilities";
+import Pricing from "@/components/Pricing";
+import FAQ from "@/components/FAQ";
+import CTA from "@/components/CTA";
+import Footer from "@/components/Footer";
 import { Shield } from "lucide-react";
+import dashboardPreview from "@/assets/dashboard-preview.png";
 
 type ViewState = "search" | "scanning" | "results";
 
@@ -103,8 +112,8 @@ const Index = () => {
               exit={{ opacity: 0 }}
             >
               {/* Hero Section */}
-              <section className="py-20 px-4">
-                <div className="container mx-auto max-w-4xl text-center">
+              <section className="relative py-20 px-4 overflow-hidden">
+                <div className="container mx-auto max-w-4xl text-center relative z-10">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -139,9 +148,40 @@ const Index = () => {
                   
                   <SearchForm onSearch={handleSearch} isLoading={false} />
                 </div>
+
+                {/* Dashboard Preview - Transparent Background */}
+                <motion.div 
+                  className="relative mt-16 mx-auto max-w-5xl px-4"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.8 }}
+                >
+                  <div className="relative">
+                    {/* Gradient overlay on top */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-10 pointer-events-none" />
+                    
+                    {/* Dashboard image with transparency */}
+                    <img 
+                      src={dashboardPreview}
+                      alt="AlienGate Dashboard Preview"
+                      className="w-full rounded-2xl shadow-2xl opacity-30"
+                    />
+                    
+                    {/* Additional mesh overlay */}
+                    <div className="absolute inset-0 grid-pattern opacity-50 rounded-2xl" />
+                  </div>
+                </motion.div>
               </section>
               
               <FeatureCards />
+              <AttackPath />
+              <BeforeAfter />
+              <PlatformSection />
+              <Capabilities />
+              <Pricing />
+              <FAQ />
+              <CTA />
+              <Footer />
             </motion.div>
           )}
           
