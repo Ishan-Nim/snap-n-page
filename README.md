@@ -1,4 +1,4 @@
-# Project Name
+# Lp Test
 
 Frontend web app built with **Vite + React + TypeScript + Tailwind CSS + shadcn-ui**.
 
