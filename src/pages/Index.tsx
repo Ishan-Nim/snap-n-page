@@ -13,6 +13,7 @@ import ServicesSection from "@/components/ServicesSection";
 import CyberKillChain from "@/components/CyberKillChain";
 import BlogSection from "@/components/BlogSection";
 import Pricing from "@/components/Pricing";
+import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
@@ -184,6 +185,7 @@ const Index = () => {
               <PlatformSection />
               <Capabilities />
               <BlogSection />
+              <Testimonials />
               <Pricing />
               <FAQ />
               <CTA />
