@@ -34,12 +34,16 @@ const Header = () => {
         </nav>
         
         <div className="flex items-center gap-3">
-          <Button variant="ghost" className="hidden md:flex">
-            Log In
-          </Button>
-          <Button className="primary-gradient hidden md:flex">
-            Get Started
-          </Button>
+          <a href="https://app.aliengate.jp/" target="_blank" rel="noopener noreferrer">
+            <Button variant="ghost" className="hidden md:flex">
+              Log In
+            </Button>
+          </a>
+          <a href="https://app.aliengate.jp/" target="_blank" rel="noopener noreferrer">
+            <Button className="primary-gradient hidden md:flex">
+              Get Started
+            </Button>
+          </a>
           <Button variant="ghost" size="icon" className="md:hidden">
             <Menu className="w-5 h-5" />
           </Button>
