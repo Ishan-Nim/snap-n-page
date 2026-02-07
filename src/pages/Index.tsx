@@ -9,6 +9,9 @@ import AttackPath from "@/components/AttackPath";
 import BeforeAfter from "@/components/BeforeAfter";
 import PlatformSection from "@/components/PlatformSection";
 import Capabilities from "@/components/Capabilities";
+import ServicesSection from "@/components/ServicesSection";
+import CyberKillChain from "@/components/CyberKillChain";
+import BlogSection from "@/components/BlogSection";
 import Pricing from "@/components/Pricing";
 import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
@@ -174,10 +177,13 @@ const Index = () => {
               </section>
               
               <FeatureCards />
+              <ServicesSection />
+              <CyberKillChain />
               <AttackPath />
               <BeforeAfter />
               <PlatformSection />
               <Capabilities />
+              <BlogSection />
               <Pricing />
               <FAQ />
               <CTA />
