@@ -66,7 +66,7 @@ const plans = [
 
 const Pricing = () => {
   return (
-    <section className="py-20 px-4 bg-secondary/30" id="pricing">
+    <section className="py-20 px-4" id="pricing">
       <div className="container mx-auto max-w-6xl">
         <motion.div 
           className="text-center mb-16"
@@ -87,7 +87,7 @@ const Pricing = () => {
             <motion.div
               key={plan.name}
               className={`relative bg-card rounded-2xl p-6 shadow-card border ${
-                plan.popular ? "border-primary ring-2 ring-primary/20" : "border-border"
+                plan.popular ? "border-primary ring-1 ring-primary/30" : "border-border"
               }`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +95,7 @@ const Pricing = () => {
               transition={{ delay: index * 0.1 }}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-primary text-primary-foreground text-xs font-semibold rounded-full">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 primary-gradient text-primary-foreground text-xs font-semibold rounded-full">
                   Most Popular
                 </div>
               )}
@@ -134,7 +134,7 @@ const Pricing = () => {
               )}
 
               <Button 
-                className={`w-full ${plan.popular ? "primary-gradient" : ""}`}
+                className={`w-full ${plan.popular ? "primary-gradient hover:opacity-90 transition-opacity" : ""}`}
                 variant={plan.popular ? "default" : "outline"}
               >
                 {plan.cta}
