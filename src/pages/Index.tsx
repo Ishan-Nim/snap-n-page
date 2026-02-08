@@ -59,6 +59,26 @@ const mockResultData = {
   ],
 };
 
+const HeroStats = () => (
+  <motion.div
+    className="flex items-center gap-8 md:gap-12 mt-10 pt-8 border-t border-border"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.5 }}
+  >
+    {[
+      { value: "2500+", label: "CLIENTS SECURED" },
+      { value: "24/7", label: "INCIDENT RESPONSE" },
+      { value: "100%", label: "CERTIFIED EXPERTS" },
+    ].map((stat) => (
+      <div key={stat.label}>
+        <div className="text-2xl md:text-3xl font-display font-bold text-foreground">{stat.value}</div>
+        <div className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+      </div>
+    ))}
+  </motion.div>
+);
+
 const Index = () => {
   const [viewState, setViewState] = useState<ViewState>("search");
   const [searchQuery, setSearchQuery] = useState("");
@@ -103,7 +123,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen hero-gradient grid-pattern">
+    <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-16">
@@ -117,64 +137,65 @@ const Index = () => {
             >
               {/* Hero Section */}
               <section className="relative py-20 px-4 overflow-hidden">
-                <div className="container mx-auto max-w-4xl text-center relative z-10">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-6"
-                  >
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full text-primary text-sm font-medium mb-8">
-                      <Shield className="w-4 h-4" />
-                      Operational Security Platform
+                <div className="container mx-auto max-w-6xl relative z-10">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    {/* Left: Content */}
+                    <div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mb-6"
+                      >
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full text-muted-foreground text-sm font-medium mb-8">
+                          <Shield className="w-4 h-4 text-primary" />
+                          Operational Security Platform
+                        </div>
+                      </motion.div>
+                      
+                      <motion.h1 
+                        className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 leading-tight"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                      >
+                        See external risk. Prioritize real threats.{" "}
+                        <span className="text-gradient">Investigate and resolve</span> with confidence.
+                      </motion.h1>
+                      
+                      <motion.p 
+                        className="text-lg text-muted-foreground mb-8 max-w-xl"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                      >
+                        AlienGate is your unified platform for Attack Surface Management, 
+                        advanced Vulnerability Scanning, and intelligent Dark Web Monitoring.
+                      </motion.p>
+                      
+                      <SearchForm onSearch={handleSearch} isLoading={false} />
+                      <HeroStats />
                     </div>
-                  </motion.div>
-                  
-                  <motion.h1 
-                    className="text-4xl md:text-6xl font-display font-bold text-foreground mb-6 leading-tight"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                  >
-                    See external risk. Prioritize real threats.
-                    <br />
-                    <span className="text-gradient">Investigate and resolve</span> with confidence.
-                  </motion.h1>
-                  
-                  <motion.p 
-                    className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                  >
-                    AlienGate is your unified platform for Attack Surface Management, 
-                    advanced Vulnerability Scanning, and intelligent Dark Web Monitoring.
-                  </motion.p>
-                  
-                  <SearchForm onSearch={handleSearch} isLoading={false} />
+
+                    {/* Right: Dashboard Preview */}
+                    <motion.div 
+                      className="hidden lg:block relative"
+                      initial={{ opacity: 0, x: 40 }}
+                      animate={{ opacity: 0.4, x: 0 }}
+                      transition={{ delay: 0.4, duration: 0.8 }}
+                    >
+                      <img 
+                        src={dashboardPreview}
+                        alt="AlienGate Dashboard Preview"
+                        className="w-full rounded-2xl"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-l from-transparent to-background pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent pointer-events-none" />
+                    </motion.div>
+                  </div>
                 </div>
 
-                {/* Dashboard Preview - Transparent Background */}
-                <motion.div 
-                  className="relative mt-16 mx-auto max-w-5xl px-4"
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.8 }}
-                >
-                  <div className="relative">
-                    {/* Gradient overlay on top */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background z-10 pointer-events-none" />
-                    
-                    {/* Dashboard image with transparency */}
-                    <img 
-                      src={dashboardPreview}
-                      alt="AlienGate Dashboard Preview"
-                      className="w-full rounded-2xl shadow-2xl opacity-30"
-                    />
-                    
-                    {/* Additional mesh overlay */}
-                    <div className="absolute inset-0 grid-pattern opacity-50 rounded-2xl" />
-                  </div>
-                </motion.div>
+                {/* Subtle grid overlay */}
+                <div className="absolute inset-0 grid-pattern opacity-30 pointer-events-none" />
               </section>
               
               <FeatureCards />

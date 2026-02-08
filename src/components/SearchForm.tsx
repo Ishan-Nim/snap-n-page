@@ -35,7 +35,7 @@ const SearchForm = ({ onSearch, isLoading }: SearchFormProps) => {
             placeholder="Enter Domain or Email Address"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 text-base placeholder:text-muted-foreground"
+            className="border-0 bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 text-base placeholder:text-muted-foreground text-foreground"
             disabled={isLoading}
           />
         </div>
