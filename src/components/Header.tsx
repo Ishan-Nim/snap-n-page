@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
-import { Shield, Menu } from "lucide-react";
+import { Shield, Menu, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTheme } from "@/hooks/use-theme";
 
 const Header = () => {
+  const { theme, toggle } = useTheme();
+
   return (
     <motion.header 
       className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-lg border-b border-border"
@@ -34,6 +37,14 @@ const Header = () => {
         </nav>
         
         <div className="flex items-center gap-3">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggle}
+            className="text-muted-foreground hover:text-foreground"
+          >
+            {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </Button>
           <a href="https://app.aliengate.jp/" target="_blank" rel="noopener noreferrer">
             <Button variant="ghost" className="hidden md:flex text-muted-foreground hover:text-foreground">
               Log In
