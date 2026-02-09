@@ -34,6 +34,9 @@ const Header = () => {
           <a href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Contact
           </a>
+          <a href="/blog" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            Blog
+          </a>
         </nav>
         
         <div className="flex items-center gap-3">
