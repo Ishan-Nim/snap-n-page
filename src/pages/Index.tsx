@@ -9,6 +9,7 @@ import AttackPath from "@/components/AttackPath";
 import BeforeAfter from "@/components/BeforeAfter";
 import PlatformSection from "@/components/PlatformSection";
 import Capabilities from "@/components/Capabilities";
+import VideoSection from "@/components/VideoSection";
 import ServicesSection from "@/components/ServicesSection";
 import CyberKillChain from "@/components/CyberKillChain";
 import BlogSection from "@/components/BlogSection";
@@ -199,6 +200,7 @@ const Index = () => {
               </section>
               
               <FeatureCards />
+              <VideoSection />
               <ServicesSection />
               <CyberKillChain />
               <AttackPath />

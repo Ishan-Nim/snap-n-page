@@ -8,6 +8,9 @@ import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import Admin from "./pages/Admin";
 import BookDemo from "./pages/BookDemo";
+import DarkWebMonitoring from "./pages/DarkWebMonitoring";
+import VulnerabilityScanning from "./pages/VulnerabilityScanning";
+import AttackSurfaceManagement from "./pages/AttackSurfaceManagement";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +27,9 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/book-demo" element={<BookDemo />} />
+            <Route path="/dark-web-monitoring" element={<DarkWebMonitoring />} />
+            <Route path="/vulnerability-scanning" element={<VulnerabilityScanning />} />
+            <Route path="/attack-surface-management" element={<AttackSurfaceManagement />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
