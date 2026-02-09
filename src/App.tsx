@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/hooks/use-theme";
 import Index from "./pages/Index";
 import Blog from "./pages/Blog";
 import Admin from "./pages/Admin";
+import BookDemo from "./pages/BookDemo";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/book-demo" element={<BookDemo />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
