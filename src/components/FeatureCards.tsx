@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Eye, Shield, Radar, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
   {
@@ -8,6 +9,7 @@ const features = [
     label: "MONITORING SERVICE",
     description: "Find leaked credentials fast on marketplaces, stealer logs and hacker forums.",
     bullets: ["Credential Monitoring", "Combo-list Detection", "Infostealer Analysis"],
+    link: "/dark-web-monitoring",
   },
   {
     icon: Shield,
@@ -15,6 +17,7 @@ const features = [
     label: "PROFESSIONAL SERVICE",
     description: "Assess Web, API, network and cloud security with DAST + 15,000 CVE coverage.",
     bullets: ["Web & API Scanning", "Network Assessment", "Cloud Security Review"],
+    link: "/vulnerability-scanning",
   },
   {
     icon: Radar,
@@ -22,6 +25,7 @@ const features = [
     label: "PROFESSIONAL SERVICE",
     description: "Map exposed assets, validate risks with screenshots, and track investigations.",
     bullets: ["Asset Discovery", "Risk Validation", "Case Management"],
+    link: "/attack-surface-management",
   },
 ];
 
@@ -71,9 +75,9 @@ const FeatureCards = () => {
                   </li>
                 ))}
               </ul>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-primary transition-colors cursor-pointer">
+              <Link to={feature.link} className="flex items-center gap-2 text-sm text-muted-foreground group-hover:text-primary transition-colors">
                 VIEW DETAILS <ArrowRight className="w-4 h-4" />
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>
