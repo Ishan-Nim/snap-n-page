@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Shield, Menu, Sun, Moon } from "lucide-react";
+import { Shield, Menu, Sun, Moon, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/use-theme";
 
@@ -53,9 +53,10 @@ const Header = () => {
               Log In
             </Button>
           </a>
-          <a href="https://app.aliengate.jp/" target="_blank" rel="noopener noreferrer">
-            <Button className="primary-gradient hidden md:flex hover:opacity-90 transition-opacity">
-              Get Started
+          <a href="/book-demo">
+            <Button className="primary-gradient hidden md:flex hover:opacity-90 transition-opacity gap-2">
+              <Calendar className="w-4 h-4" />
+              Book a Demo
             </Button>
           </a>
           <Button variant="ghost" size="icon" className="md:hidden">
