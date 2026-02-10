@@ -68,9 +68,9 @@ const HeroStats = () => (
     transition={{ delay: 0.5 }}
   >
     {[
-      { value: "2500+", label: "CLIENTS SECURED" },
-      { value: "24/7", label: "INCIDENT RESPONSE" },
-      { value: "100%", label: "CERTIFIED EXPERTS" },
+      { value: "419", label: "TOTAL SEARCHES" },
+      { value: "76", label: "CLIENTS" },
+      { value: "960", label: "TOTAL MAIL MONITORINGS" },
     ].map((stat) => (
       <div key={stat.label}>
         <div className="text-2xl md:text-3xl font-display font-bold text-foreground">{stat.value}</div>
