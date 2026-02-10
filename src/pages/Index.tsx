@@ -92,12 +92,12 @@ const HeroStats = () => (
   >
     {[
       { value: 10000, suffix: "+", label: "CLIENTS SECURED", format: "k" },
-      { value: 0, suffix: "", label: "INCIDENT RESPONSE", static: "24/7" },
-      { value: 100, suffix: "%", label: "CERTIFIED EXPERTS" },
+      { value: 100000, suffix: "+", label: "TOTAL SEARCHES", format: "k" },
+      { value: 100000, suffix: "+", label: "MONITORED ASSETS", format: "k" },
     ].map((stat) => (
       <div key={stat.label}>
         <div className="text-2xl md:text-3xl font-display font-bold text-foreground">
-          {stat.static ? stat.static : <AnimatedCounter target={stat.value} suffix={stat.suffix} />}
+          <AnimatedCounter target={stat.value} suffix={stat.suffix} />
         </div>
         <div className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</div>
       </div>
