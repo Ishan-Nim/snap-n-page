@@ -25,7 +25,7 @@ const ServicesSection = () => {
           viewport={{ once: true }}
         >
           <span className="text-primary text-sm font-semibold tracking-widest uppercase mb-2 block">
-            Our Services
+            Services by ParanoidLab
           </span>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
             Gain Full <span className="text-gradient">Flexibility</span>
