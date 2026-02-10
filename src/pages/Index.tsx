@@ -60,6 +60,29 @@ const mockResultData = {
   ],
 };
 
+const AnimatedCounter = ({ target, suffix = "" }: { target: number; suffix?: string }) => {
+  const [count, setCount] = useState(0);
+  
+  useEffect(() => {
+    const duration = 2000;
+    const steps = 60;
+    const increment = target / steps;
+    let current = 0;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, duration / steps);
+    return () => clearInterval(timer);
+  }, [target]);
+
+  return <>{count >= 1000 ? `${(count / 1000).toFixed(count === target ? 0 : 1)}k` : count}{suffix}</>;
+};
+
 const HeroStats = () => (
   <motion.div
     className="flex items-center gap-8 md:gap-12 mt-10 pt-8 border-t border-border"
@@ -68,12 +91,14 @@ const HeroStats = () => (
     transition={{ delay: 0.5 }}
   >
     {[
-      { value: "2500+", label: "CLIENTS SECURED" },
-      { value: "24/7", label: "INCIDENT RESPONSE" },
-      { value: "100%", label: "CERTIFIED EXPERTS" },
+      { value: 10000, suffix: "+", label: "CLIENTS SECURED", format: "k" },
+      { value: 0, suffix: "", label: "INCIDENT RESPONSE", static: "24/7" },
+      { value: 100, suffix: "%", label: "CERTIFIED EXPERTS" },
     ].map((stat) => (
       <div key={stat.label}>
-        <div className="text-2xl md:text-3xl font-display font-bold text-foreground">{stat.value}</div>
+        <div className="text-2xl md:text-3xl font-display font-bold text-foreground">
+          {stat.static ? stat.static : <AnimatedCounter target={stat.value} suffix={stat.suffix} />}
+        </div>
         <div className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</div>
       </div>
     ))}
