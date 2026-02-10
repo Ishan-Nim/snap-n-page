@@ -1,5 +1,10 @@
 import { motion } from "framer-motion";
-import { Globe, ShieldCheck, Bug, MessageSquare, Radio } from "lucide-react";
+import { Globe, ShieldCheck, Bug, Database, Clock, AlertTriangle, MessageSquare, Radio } from "lucide-react";
+
+const stats = [
+  { value: "50", unit: "million", label: "Records daily update", icon: Database },
+  { value: "5", unit: "min", label: "Alert time", icon: Clock },
+];
 
 const monitoringSources = [
   { icon: Globe, label: "Dark Web Marketplaces" },
@@ -20,7 +25,7 @@ const ServicesSection = () => {
           viewport={{ once: true }}
         >
           <span className="text-primary text-sm font-semibold tracking-widest uppercase mb-2 block">
-            Our Services
+            Services by ParanoidLab
           </span>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
             Gain Full <span className="text-gradient">Flexibility</span>
@@ -29,6 +34,29 @@ const ServicesSection = () => {
             Access Dark Web Monitoring via Dashboard or automate detection of compromised credentials across every corner of the underground.
           </p>
         </motion.div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 max-w-xl mx-auto">
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              className="bg-card rounded-2xl border border-border p-6 text-center shadow-card"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+            >
+              <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
+              <div className="text-4xl font-display font-bold text-foreground">
+                {stat.value}
+              </div>
+              <div className="text-sm text-primary font-semibold uppercase tracking-wider">
+                {stat.unit}
+              </div>
+              <p className="text-muted-foreground text-sm mt-1">{stat.label}</p>
+            </motion.div>
+          ))}
+        </div>
 
         {/* Monitoring Sources */}
         <motion.div

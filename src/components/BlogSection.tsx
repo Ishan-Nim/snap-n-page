@@ -16,7 +16,7 @@ const mockPosts = [
     title: "5 Signs Your Credentials Are Already on the Dark Web",
     excerpt: "Many organizations discover their data has been compromised months after the fact. Learn the early warning signs and how to act.",
     date: "2025-01-15",
-    author: "AlienGate Research",
+    author: "ParanoidLab",
     category: "Dark Web",
   },
   {

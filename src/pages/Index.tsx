@@ -60,6 +60,25 @@ const mockResultData = {
   ],
 };
 
+const HeroStats = () => (
+  <motion.div
+    className="flex items-center gap-8 md:gap-12 mt-10 pt-8 border-t border-border"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.5 }}
+  >
+    {[
+      { value: "2500+", label: "CLIENTS SECURED" },
+      { value: "24/7", label: "INCIDENT RESPONSE" },
+      { value: "100%", label: "CERTIFIED EXPERTS" },
+    ].map((stat) => (
+      <div key={stat.label}>
+        <div className="text-2xl md:text-3xl font-display font-bold text-foreground">{stat.value}</div>
+        <div className="text-xs text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+      </div>
+    ))}
+  </motion.div>
+);
 
 const Index = () => {
   const [viewState, setViewState] = useState<ViewState>("search");
@@ -155,7 +174,7 @@ const Index = () => {
                       </motion.p>
                       
                       <SearchForm onSearch={handleSearch} isLoading={false} />
-                      
+                      <HeroStats />
                     </div>
 
                     {/* Right: Dashboard Preview */}
