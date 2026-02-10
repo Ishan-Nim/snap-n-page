@@ -19,7 +19,7 @@ const posts = [
     title: "5 Signs Your Credentials Are Already on the Dark Web",
     excerpt: "Many organizations discover their data has been compromised months after the fact. Learn the early warning signs and how to act before damage escalates.",
     date: "2025-01-15",
-    author: "ParanoidLab",
+    author: "AlienGate Research",
     category: "Dark Web",
   },
   {
@@ -35,7 +35,7 @@ const posts = [
     title: "Attack Surface Management: From Asset Discovery to Risk Resolution",
     excerpt: "A comprehensive guide to building an effective ASM program that turns asset visibility into actionable security outcomes.",
     date: "2024-12-20",
-    author: "ParanoidLab",
+    author: "AlienGate Research",
     category: "Attack Surface",
   },
   {
@@ -51,7 +51,7 @@ const posts = [
     title: "Why External Attack Surface Management Is Non-Negotiable in 2025",
     excerpt: "As organizations expand their digital footprint, monitoring external exposure becomes critical. Learn how EASM closes the gap traditional tools miss.",
     date: "2024-11-30",
-    author: "ParanoidLab",
+    author: "AlienGate Research",
     category: "Attack Surface",
   },
 ];
@@ -82,7 +82,7 @@ const Blog = () => {
               Security <span className="text-gradient">Blog</span>
             </h1>
             <p className="text-muted-foreground max-w-lg mx-auto">
-              Threat intelligence, product updates, and security insights from the AlienGate & ParanoidLab team.
+              Threat intelligence, product updates, and security insights from the AlienGate team.
             </p>
           </motion.div>
 
