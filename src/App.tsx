@@ -13,6 +13,7 @@ import VulnerabilityScanning from "./pages/VulnerabilityScanning";
 import AttackSurfaceManagement from "./pages/AttackSurfaceManagement";
 import NotFound from "./pages/NotFound";
 import Docs from "./pages/Docs";
+import Whitepapers from "./pages/Whitepapers";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +33,7 @@ const App = () => (
             <Route path="/vulnerability-scanning" element={<VulnerabilityScanning />} />
             <Route path="/attack-surface-management" element={<AttackSurfaceManagement />} />
             <Route path="/docs" element={<Docs />} />
+            <Route path="/whitepapers" element={<Whitepapers />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
