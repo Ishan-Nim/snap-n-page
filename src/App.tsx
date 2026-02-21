@@ -12,6 +12,7 @@ import DarkWebMonitoring from "./pages/DarkWebMonitoring";
 import VulnerabilityScanning from "./pages/VulnerabilityScanning";
 import AttackSurfaceManagement from "./pages/AttackSurfaceManagement";
 import NotFound from "./pages/NotFound";
+import Docs from "./pages/Docs";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/dark-web-monitoring" element={<DarkWebMonitoring />} />
             <Route path="/vulnerability-scanning" element={<VulnerabilityScanning />} />
             <Route path="/attack-surface-management" element={<AttackSurfaceManagement />} />
+            <Route path="/docs" element={<Docs />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
