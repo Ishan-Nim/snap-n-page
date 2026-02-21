@@ -37,6 +37,9 @@ const Header = () => {
           <a href="/docs" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
             Docs
           </a>
+          <a href="/whitepapers" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            White Papers
+          </a>
         </nav>
         
         <div className="flex items-center gap-3">
