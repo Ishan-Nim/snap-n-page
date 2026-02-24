@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
+import { useState } from "react";
 
 const testimonials = [
   {
@@ -33,16 +34,33 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   return (
-    <section className="py-20 px-4">
-      <div className="container mx-auto max-w-6xl">
+    <section className="py-24 px-4 bg-secondary/20 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+
+      <div className="container mx-auto max-w-6xl relative z-10">
         <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">
+          <motion.div
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium mb-6"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+          >
+            <Star className="w-3.5 h-3.5 fill-primary" />
+            Testimonials
+          </motion.div>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-5 leading-tight">
             Trusted by <span className="text-gradient">Security Leaders</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -50,33 +68,74 @@ const Testimonials = () => {
           </p>
         </motion.div>
 
+        {/* Masonry-style grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((item, index) => (
             <motion.div
               key={item.name}
-              className="relative bg-card border border-border rounded-2xl p-8 shadow-card overflow-hidden group"
-              initial={{ opacity: 0, y: 20 }}
+              className="relative group"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.12 }}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              {/* Corner accent */}
-              <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full" />
+              <div className={`relative bg-card/80 backdrop-blur-sm border rounded-2xl p-8 transition-all duration-500 h-full ${
+                hoveredIndex === index 
+                  ? "border-primary/40 shadow-glow scale-[1.02]" 
+                  : "border-border hover:border-primary/20"
+              }`}>
+                {/* Decorative gradient line */}
+                <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-              <Quote className="w-8 h-8 text-primary/40 mb-4" />
+                {/* Quote icon */}
+                <motion.div
+                  className="mb-6"
+                  animate={hoveredIndex === index ? { rotate: [0, -10, 0] } : {}}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                    <Quote className="w-5 h-5 text-primary" />
+                  </div>
+                </motion.div>
 
-              <p className="text-muted-foreground text-sm leading-relaxed mb-8">
-                {item.quote}
-              </p>
-
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-bold text-sm">
-                  {item.initials}
+                {/* Stars */}
+                <div className="flex gap-1 mb-5">
+                  {[...Array(5)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, scale: 0 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 + index * 0.1 + i * 0.05 }}
+                    >
+                      <Star className="w-4 h-4 fill-warning text-warning" />
+                    </motion.div>
+                  ))}
                 </div>
-                <div>
-                  <p className="font-display font-semibold text-foreground">{item.name}</p>
-                  <p className="text-xs text-muted-foreground">{item.role}</p>
-                  <p className="text-xs text-primary/70">{item.company}</p>
+
+                {/* Quote */}
+                <p className="text-muted-foreground leading-relaxed mb-8 text-[15px]">
+                  "{item.quote}"
+                </p>
+
+                {/* Author */}
+                <div className="flex items-center gap-4 pt-6 border-t border-border/50">
+                  <motion.div
+                    className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-primary-foreground font-bold text-sm shadow-lg"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {item.initials}
+                  </motion.div>
+                  <div>
+                    <p className="font-display font-semibold text-foreground">
+                      {item.name}
+                    </p>
+                    <p className="text-xs text-muted-foreground">{item.role}</p>
+                    <p className="text-xs text-primary font-medium">{item.company}</p>
+                  </div>
                 </div>
               </div>
             </motion.div>
