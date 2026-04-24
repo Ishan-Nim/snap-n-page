@@ -1,74 +1,75 @@
 import { motion } from "framer-motion";
-import { Check, X } from "lucide-react";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const plans = [
   {
     name: "Free",
-    description: "Basic breach check",
+    description: "For trials and validation",
     price: "¥0",
     period: "",
+    taxNote: "",
     features: [
-      "Up to 10 email checks / month",
-      "1 company domain",
-      "Basic breach report",
-      "Email support",
+      "Email address check: 10 addresses",
+      "Public leaked database check",
+      "Manual scan: OSINT only",
+      "Simple report / PDF export",
     ],
-    limitations: [
-      "No continuous dark web monitoring",
-      "No automatic scanning",
-      "No PDF reporting",
-    ],
-    cta: "Start Free",
+    cta: "Start Free Trial",
     popular: false,
   },
   {
     name: "Basic",
-    description: "Practical security for SMEs",
-    price: "¥2,980",
+    description: "For companies that want to start continuous monitoring",
+    price: "¥19,800",
     period: "/ month",
+    taxNote: "¥21,780/month including tax",
     features: [
-      "Up to 500 email checks / month",
-      "10 company domains",
-      "Weekly & monthly scans",
-      "Basic dark web monitoring",
-      "CSV export",
-      "Priority email support",
+      "Dark web investigation: 1 domain",
+      "Vulnerability assessment: 3 domains",
+      "Email leak check: 300 addresses",
+      "Scan frequency: Once per week",
     ],
-    limitations: [
-      "No advanced analysis",
-      "No custom reports",
-    ],
-    cta: "Choose Basic",
+    cta: "Select Plan",
     popular: false,
   },
   {
     name: "Premium",
-    description: "Advanced security for enterprises",
-    price: "¥9,800",
+    description: "For companies that want to strengthen assessment and operational management",
+    price: "¥49,800",
     period: "/ month",
+    taxNote: "¥54,780/month including tax",
     features: [
-      "Unlimited email checks",
-      "Unlimited domains",
-      "Daily automatic scans",
-      "Advanced dark web monitoring",
-      "Real-time alerts",
-      "PDF report generation",
-      "Custom dashboard",
-      "API access",
-      "Phone support",
+      "Dark web investigation: 3 domains",
+      "Vulnerability assessment: 10 domains",
+      "Email leak check: 1,000 addresses",
+      "Scan frequency: Daily",
     ],
-    limitations: [],
-    cta: "Choose Premium",
+    cta: "Select Plan",
     popular: true,
+  },
+  {
+    name: "Enterprise",
+    description: "For large-scale operations and custom requirements",
+    price: "Custom quote",
+    period: "",
+    taxNote: "",
+    features: [
+      "Dark web investigation: Unlimited",
+      "Vulnerability assessment: Unlimited",
+      "Email leak check: Unlimited",
+      "Custom requirements supported",
+    ],
+    cta: "Contact Us",
+    popular: false,
   },
 ];
 
 const Pricing = () => {
   return (
     <section className="py-20 px-4" id="pricing">
-      <div className="container mx-auto max-w-6xl">
-        <motion.div 
+      <div className="container mx-auto max-w-7xl">
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -82,11 +83,11 @@ const Pricing = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {plans.map((plan, index) => (
             <motion.div
               key={plan.name}
-              className={`relative bg-card rounded-2xl p-6 shadow-card border ${
+              className={`relative bg-card rounded-2xl p-6 shadow-card border flex flex-col ${
                 plan.popular ? "border-primary ring-1 ring-primary/30" : "border-border"
               }`}
               initial={{ opacity: 0, y: 20 }}
@@ -96,21 +97,26 @@ const Pricing = () => {
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 primary-gradient text-primary-foreground text-xs font-semibold rounded-full">
-                  Most Popular
+                  Popular
                 </div>
               )}
 
               <div className="mb-6">
                 <h3 className="text-xl font-display font-semibold text-foreground">{plan.name}</h3>
-                <p className="text-sm text-muted-foreground">{plan.description}</p>
+                <p className="text-sm text-muted-foreground mt-1 min-h-[40px]">{plan.description}</p>
               </div>
 
               <div className="mb-6">
-                <span className="text-4xl font-display font-bold text-foreground">{plan.price}</span>
-                <span className="text-muted-foreground">{plan.period}</span>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-3xl font-display font-bold text-foreground">{plan.price}</span>
+                  {plan.period && <span className="text-muted-foreground">{plan.period}</span>}
+                </div>
+                {plan.taxNote && (
+                  <p className="text-xs text-muted-foreground mt-1">{plan.taxNote}</p>
+                )}
               </div>
 
-              <ul className="space-y-3 mb-6">
+              <ul className="space-y-3 mb-6 flex-1">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2 text-sm">
                     <Check className="w-4 h-4 text-success mt-0.5 flex-shrink-0" />
@@ -119,21 +125,7 @@ const Pricing = () => {
                 ))}
               </ul>
 
-              {plan.limitations.length > 0 && (
-                <>
-                  <p className="text-xs text-muted-foreground uppercase tracking-wide mb-2">Limitations</p>
-                  <ul className="space-y-2 mb-6">
-                    {plan.limitations.map((limitation) => (
-                      <li key={limitation} className="flex items-start gap-2 text-sm">
-                        <X className="w-4 h-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-                        <span className="text-muted-foreground">{limitation}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-
-              <Button 
+              <Button
                 className={`w-full ${plan.popular ? "primary-gradient hover:opacity-90 transition-opacity" : ""}`}
                 variant={plan.popular ? "default" : "outline"}
               >
